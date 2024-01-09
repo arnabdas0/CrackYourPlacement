@@ -4,7 +4,7 @@ class Solution {
         if(num == 0) return "0";
         String result = "";
         while(num != 0){
-            result = map[num & 15] + result;
+            result = map[(num & 15)] + result;
             num = num >>> 4;
         }
 
