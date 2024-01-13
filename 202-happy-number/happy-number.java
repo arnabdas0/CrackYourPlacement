@@ -1,20 +1,30 @@
 class Solution {
-    public boolean isHappy(int n) {
-        int s=n, f=n;
-        do{
-            s = compute(s);
-            f = compute(compute(f));
-            if(s == 1 || f == 1) return true;
-        }while(s != f);
-        return false;
-    }
+     public boolean isHappy(int n) {
 
-    public int compute(int n){
-        int s = 0;
-        while(n != 0){
-            s += (n%10)*(n%10);
-            n /= 10;
+        HashSet<Integer> hashSet = new HashSet<>();
+
+        while (hashSet.add(n)){
+
+            int total = 0 ;
+
+            while (n>0){
+
+                total+= (n%10) * (n%10);
+                n/=10;
+
+            }
+
+            if (total==1){
+                return true;
+            }
+
+            else {
+                n=total;
+            }
+
         }
-        return s;
+
+        return false;
+
     }
 }
