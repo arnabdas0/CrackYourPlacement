@@ -4,7 +4,7 @@ class Solution {
         do{
             s = compute(s);
             f = compute(compute(f));
-            if(s == 1) return true;
+            if(s == 1 || f == 1) return true;
         }while(s != f);
         return false;
     }
