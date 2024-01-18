@@ -26,22 +26,24 @@ class Solution {
         return true;
     }
     public boolean helper(char[][] board, int i, int j){
-        if(i==board.length){
+        if(i==9){
             return true;
         }
-
-        if(j == board[0].length){
-            return helper(board, i+1, 0);
+        int nextI = i;
+        int nextJ = j+1;
+        if(j+1 == 9){
+            nextI = i+1;
+            nextJ = 0;
         }
 
         //already placed
         if(board[i][j] != '.') {
-            return helper(board, i, j+1);
+            return helper(board, nextI, nextJ);
         }
         for(char n='1'; n<='9'; n++){
             if(isSafe(board, i, j, n)){
                 board[i][j] = n;
-                if(helper(board, i, j+1)){
+                if(helper(board, nextI, nextJ)){
                     return true;
                 }
                 board[i][j] = '.';
