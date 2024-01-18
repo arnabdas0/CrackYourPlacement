@@ -29,8 +29,7 @@ class Solution {
         if(i==9){
             return true;
         }
-        int nextI = i;
-        int nextJ = j+1;
+        int nextI = i, nextJ = j+1;
         if(j+1 == 9){
             nextI = i+1;
             nextJ = 0;
