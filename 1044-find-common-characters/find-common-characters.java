@@ -20,9 +20,8 @@ class Solution {
             }
 
             // Update charFrequency to keep only the common characters and their minimum frequencies
-            for (Map.Entry<Character, Integer> entry : charFrequency.entrySet()) {
-                char c = entry.getKey();
-                int minFrequency = Math.min(entry.getValue(), currentWordFrequency.getOrDefault(c, 0));
+            for (char c : charFrequency.keySet()) {
+                int minFrequency = Math.min(charFrequency.get(c), currentWordFrequency.getOrDefault(c, 0));
                 charFrequency.put(c, minFrequency);
             }
         }
