@@ -1,39 +1,49 @@
 class Solution {
     public List<String> commonChars(String[] words) {
-        List<String> ans = new ArrayList<>();
+      
+      int[] chars = new int[26];
 
-        // Map to store the frequency of characters in the first word
-        Map<Character, Integer> charFrequency = new HashMap<>();
+      for(int i=0; i < words[0].length(); i++){
+          int index = words[0].charAt(i) - 'a';
+          chars[index]++;
+      }
 
-        // Populate charFrequency with characters and their frequencies from the first word
-        for (char c : words[0].toCharArray()) {
-            charFrequency.put(c, charFrequency.getOrDefault(c, 0) + 1);
-        }
+      for(int i=1; i < words.length; i++){
+          updateCommonFreq(words[i], chars);
+      }  
+      
+      List<String> out = new ArrayList<>();
+      for(int i=0; i < 26; i++){
 
-        // Iterate through the rest of the words
-        for (int i = 1; i < words.length; i++) {
-            Map<Character, Integer> currentWordFrequency = new HashMap<>();
-
-            // Count the frequency of characters in the current word
-            for (char c : words[i].toCharArray()) {
-                currentWordFrequency.put(c, currentWordFrequency.getOrDefault(c, 0) + 1);
-            }
-
-            // Update charFrequency to keep only the common characters and their minimum frequencies
-            for (char c : charFrequency.keySet()) {
-                int minFrequency = Math.min(charFrequency.get(c), currentWordFrequency.getOrDefault(c, 0));
-                charFrequency.put(c, minFrequency);
+            if(chars[i] != 0 ){
+                int index = chars[i];
+                while(index > 0){
+                     out.add(""+(char)(i+'a'));
+                     index--;
+                }      
             }
         }
-
-        // Build the result list based on the final charFrequency map
-        for (char c : charFrequency.keySet()) {
-            int frequency = charFrequency.get(c);
-            for (int j = 0; j < frequency; j++) {
-                ans.add(Character.toString(c));
-            }
-        }
-
-        return ans;
+        return out;
     }
+
+    public void updateCommonFreq(String word, int[] chars){
+
+        int[] chars1 = new int[26];
+
+        for(int i=0; i < word.length(); i++){
+            int index = word.charAt(i) - 'a';
+            chars1[index]++;
+        }
+
+        for(int i=0; i < 26; i++){
+
+            if(chars[i] != 0 && chars1[i] == 0)
+                chars[i] = 0;
+
+            if(chars[i] != 0 && chars1[i] != 0)
+                chars[i] = Math.min(chars[i], chars1[i]);              
+        }
+    }
+
+   
 }
