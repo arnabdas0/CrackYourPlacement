@@ -28,9 +28,8 @@ class Solution {
         }
 
         // Build the result list based on the final charFrequency map
-        for (Map.Entry<Character, Integer> entry : charFrequency.entrySet()) {
-            char c = entry.getKey();
-            int frequency = entry.getValue();
+        for (char c : charFrequency.keySet()) {
+            int frequency = charFrequency.get(c);
             for (int j = 0; j < frequency; j++) {
                 ans.add(Character.toString(c));
             }
