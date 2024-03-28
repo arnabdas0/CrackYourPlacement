@@ -1,10 +1,20 @@
 class Solution {
     public int[][] reconstructQueue(int[][] people) {
-	Arrays.sort(people, (a,b) -> a[0] == b[0] ? a[1] - b[1] : b[0] - a[0]);
+        if (people.length == 1) return people;
 
-	List<int[]> ordered = new LinkedList<>();
-	for (int[] p: people) ordered.add(p[1], p);
+        PriorityQueue<int[]> pq = new PriorityQueue<>(
+                (a, b) -> a[0] == b[0] ? a[1] - b[1] :  b[0] - a[0]
+        );
 
-	return ordered.toArray(new int[people.length][2]);
-}
+        Collections.addAll(pq, people);
+
+        List<int[]> answer = new ArrayList<>();
+
+        for (int i = 0; i < people.length; i++) {
+            int[] poll = pq.poll();
+            answer.add(poll[1], poll);
+        }
+
+        return answer.toArray(new int[people.length][2]);
+    }
 }
