@@ -1,7 +1,6 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> output = new ArrayList<List<Integer>>();
-	    if (numRows <= 0)  return output;
 	    ArrayList<Integer> prev = new ArrayList<Integer>();
 	    prev.add(1);
 	    output.add(prev);
