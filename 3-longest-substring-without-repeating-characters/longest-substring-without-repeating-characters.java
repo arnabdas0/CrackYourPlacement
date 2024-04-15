@@ -10,7 +10,6 @@ class Solution {
         for (int end = 0; end < s.length(); end++) {
             char currentChar = s.charAt(end);
             if (map.containsKey(currentChar)) {
-                // Update the start pointer to the next index of the repeated character
                 start = Math.max(start, map.get(currentChar) + 1);
             }
             map.put(currentChar, end);
