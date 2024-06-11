@@ -6,7 +6,7 @@ class Solution {
         reverse(nums, k, nums.length-1);
     }
 
-    public void reverse(int nums[], int s, int e){
+    public void reverse(int[] nums, int s, int e){
         while(s<e){
             int temp = nums[s];
             nums[s] = nums[e];
