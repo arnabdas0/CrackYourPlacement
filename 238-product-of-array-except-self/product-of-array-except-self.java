@@ -8,8 +8,8 @@ class Solution {
             ans[i] = ans[i-1] * nums[i-1];
         }
 
-        int right = nums[l-1];
-        for(int i=l-2; i>=0; i--){
+        int right = 1;
+        for(int i=l-1; i>=0; i--){
             ans[i] *= right;
             right *= nums[i];
         }
