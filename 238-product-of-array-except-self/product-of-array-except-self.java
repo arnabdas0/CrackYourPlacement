@@ -3,7 +3,7 @@ class Solution {
         int l = nums.length;
         int ans[] = new int[l];
 
-        Arrays.fill(ans, 1);
+        ans[0] = 1;
         for(int i=1; i<l; i++){
             ans[i] = ans[i-1] * nums[i-1];
         }
