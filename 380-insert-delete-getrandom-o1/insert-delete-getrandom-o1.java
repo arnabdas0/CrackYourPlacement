@@ -12,7 +12,7 @@ class RandomizedSet {
     }
 
     public boolean insert(int val) {
-        if (search(val)) return false;
+        if (map.containsKey(val)) return false;
 
         list.add(val);
         map.put(val, list.size() - 1);
@@ -20,7 +20,7 @@ class RandomizedSet {
     }
 
     public boolean remove(int val) {
-        if (!search(val)) return false;
+        if (!map.containsKey(val)) return false;
 
         int index = map.get(val);
         list.set(index, list.get(list.size() - 1));
